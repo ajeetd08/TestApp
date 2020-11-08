@@ -1,0 +1,20 @@
+{
+    "questions": [
+        { "ID": "question1",
+          "Type": "radio",
+          "Value": "anger,cheating,violence,honesty",
+         "Question": "What is valid employee conduct, assuming HIRED?",
+        "Hint": "No negative behavior",
+        "options": ["anger", "cheating", "violence", "honesty"],
+        "Answer": "honesty"},
+
+        { "ID": "question2",
+          "Type": "radio",  
+          "Value": "alcohol,working,learning,focusing",
+          "Question": "Which of the following is prohibited at work",
+          "Hint": "No negative behavior",
+            "options": ["drinking alcohol", "taking a break", "talking to manager", "challenging a coworkers idea"],
+          "Answer": "alcohol"
+        }
+    ]
+}
