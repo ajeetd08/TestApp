@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestareaComponent } from './testarea/testarea.component';
 import { JsonsearchService } from './jsonsearch.service';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestareaComponent
+    TestareaComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

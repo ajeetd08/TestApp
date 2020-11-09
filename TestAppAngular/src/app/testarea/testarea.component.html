@@ -1,11 +1,15 @@
 
 <div class="header color">
-    <h1>Test Suite</h1>
+    <h1>Need {{minPassPct*100}} Percent to Pass</h1>
 </div>
 
 <section>
+    
     <div>{{ registrationForm.value | json }}</div>
     <form id="form" [formGroup]="registrationForm" (ngSubmit)="postData();">
+        <div class="row">
+            <button type="button" class="btn btn-warning" (click)="changeHints();">{{showHints ? 'Hide Hints' : 'Show Hints'}}</button>
+        </div>
         <div class="row form">
             <!--Dynamic control binding-->
                 <div class="col-md-12" *ngFor="let control of dynamicFormArray">
@@ -13,6 +17,7 @@
                        <div *ngSwitchCase="'radio'">
                             <div>
                                 <h3>{{control.Question}}</h3>
+                                <h4 *ngIf="showHints" class="text-warning">{{control.Hint}}</h4>
                             </div>
                             <div>
                                 
@@ -28,8 +33,28 @@
                     </div>
                 </div> <!--End of for loop-->
             <!--Dynamic control binding-->
-            <input type="submit" value="submit">
+            <input class="btn btn-primary" type="submit" value="submit">
         </div>
     </form>
+
+    <div *ngIf="submitted">
+        <div>SUBMIT LOG</div>
+        <div *ngFor="let inputAnswer of inputAnswers; let i = index;">
+            <span class="bg-success text-white" *ngIf="inputEqual(i)">Correct Answer for Question..{{i+1}}</span>
+            <span class="bg-danger text-white" *ngIf="!inputEqual(i)">INCORRECT Answer for Question..{{i+1}}</span>
+        </div>
+
+        <div>{{getScore() * 100}} Percent Is Your Score</div>
+        <div *ngIf="passingScore(getScore())">
+           <span class="bg-success text-white">You recieved a passing score for this exam. Your marks has been recorded.</span> 
+           <br>
+           <button (click)="reset()" type="button" class="btn btn-warning">Retry Test</button>
+        </div>
+        <div *ngIf="!passingScore(getScore())">
+            <span class="bg-danger text-white">You did not pass this exam. Keep Trying.</span>
+        </div>
+
+    </div>
+
 </section>
 
